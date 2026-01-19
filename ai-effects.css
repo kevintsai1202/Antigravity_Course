@@ -1,0 +1,110 @@
+/* AI Scanning Effect */
+@keyframes scan-line {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+    display: none;
+    /* Hidden by default */
+}
+
+.scan-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: hsl(var(--accent-secondary));
+    box-shadow: 0 0 10px hsl(var(--accent-secondary)), 0 0 20px hsl(var(--accent-secondary));
+    animation: scan-line 1.5s linear forwards;
+}
+
+.scan-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            hsla(var(--accent-secondary), 0.1) 0%,
+            transparent 20%);
+    animation: scan-line 1.5s linear forwards;
+}
+
+.scanning .scan-overlay {
+    display: block;
+}
+
+.scanning {
+    position: relative;
+    /* Ensure overlay aligns */
+    box-shadow: 0 0 15px hsla(var(--accent-secondary), 0.3);
+    border: 1px solid hsla(var(--accent-secondary), 0.5);
+    transition: all 0.3s;
+}
+
+/* Tech Border / Corners */
+.tech-border {
+    position: relative;
+    border: 1px solid hsla(var(--glass-border), 0.3);
+    overflow: hidden;
+}
+
+.tech-border::before,
+.tech-border::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid hsl(var(--accent-primary));
+    transition: all 0.3s;
+    opacity: 0.5;
+}
+
+.tech-border::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.tech-border::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+.tech-border:hover::before,
+.tech-border:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    border: 2px solid hsl(var(--accent-primary));
+}

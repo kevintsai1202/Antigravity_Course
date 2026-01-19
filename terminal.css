@@ -1,0 +1,113 @@
+/* Terminal Window */
+.terminal-window {
+    background: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    font-family: 'Fira Code', monospace;
+    overflow: hidden;
+    margin-top: 2rem;
+    max-width: 600px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    /* Console text aligns left */
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f56;
+}
+
+.dot-yellow {
+    background: #ffbd2e;
+}
+
+.dot-green {
+    background: #27c93f;
+}
+
+.terminal-body {
+    padding: 1rem;
+    color: #d4d4d4;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    min-height: 150px;
+}
+
+/* Command Prompt Style for Button */
+.btn-command {
+    font-family: 'Fira Code', monospace;
+    background: #000;
+    color: #0f0;
+    /* Green terminal text */
+    border: 1px solid #0f0;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.btn-command:hover {
+    background: #0f0;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-command::before {
+    content: '> ';
+}
+
+/* Typing Effect */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background: #0f0;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.cmd-text {
+    color: #fff;
+}
+
+.output-text {
+    color: #aaa;
+}
+
+.success-text {
+    color: #27c93f;
+}

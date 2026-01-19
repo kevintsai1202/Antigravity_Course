@@ -164,7 +164,7 @@ function setupSidebarToggle() {
                 icon.classList.add('fa-arrow-right');
                 icon.classList.add('fa-bars');
             }
-        });
+        }
     }
 }
 

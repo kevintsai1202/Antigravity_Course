@@ -148,6 +148,17 @@ li {
     margin-bottom: 1rem;
 }
 
+a {
+    color: hsl(var(--accent-primary));
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: hsl(var(--accent-secondary));
+    text-decoration: underline;
+}
+
 /* Layout */
 .app-container {
     display: flex;

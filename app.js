@@ -138,17 +138,43 @@ function generateSidebar() {
 function setupSidebarToggle() {
     const btn = document.getElementById('sidebarToggle');
     const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content'); // Assuming .main-content exists
 
-    if (btn && sidebar) {
+    if (btn && sidebar && mainContent) {
         const icon = btn.querySelector('i');
-        btn.addEventListener('click', () => {
+
+        btn.addEventListener('click', function () {
             sidebar.classList.toggle('collapsed');
+
+            // Adjust main content margin on desktop
+            if (window.innerWidth >= 768) {
+                if (sidebar.classList.contains('collapsed')) {
+                    mainContent.style.marginLeft = '0';
+                } else {
+                    // Sidebar is sticky/flex, margin might be auto handled by flex
+                    // Actually css says .sidebar width becomes 0. Flexbox handles it.
+                    mainContent.style.marginLeft = '0';
+                }
+            }
+
             // Toggle Icon
-            if (sidebar.classList.contains('collapsed')) {
+            if (icon) { // Ensure icon exists
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-arrow-right');
+                } else {
+                    icon.classList.remove('fa-arrow-right');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Mobile Init: Collapse by default
+        if (window.innerWidth < 768) {
+            sidebar.classList.add('collapsed');
+            if (icon) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-arrow-right');
-            } else {
-                icon.classList.remove('fa-arrow-right');
                 icon.classList.add('fa-bars');
             }
         });

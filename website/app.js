@@ -183,6 +183,18 @@ function setupSidebarToggle() {
                 icon.classList.add('fa-arrow-right');
             }
         }
+
+        // Close Sidebar when any link inside it is clicked (Mobile only)
+        sidebar.addEventListener('click', (e) => {
+            if (window.innerWidth < 768 && e.target.closest('a')) {
+                sidebar.classList.remove('active');
+                // Reset icon to arrow-right (closed state)
+                if (icon) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-arrow-right');
+                }
+            }
+        });
     }
 }
 

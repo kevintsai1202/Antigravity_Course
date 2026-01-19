@@ -131,38 +131,56 @@ function setupSidebarToggle() {
         const icon = btn.querySelector('i');
 
         btn.addEventListener('click', function () {
-            sidebar.classList.toggle('collapsed');
+            if (window.innerWidth < 768) {
+                // Mobile: Toggle Active
+                sidebar.classList.toggle('active');
 
-            // Adjust main content margin on desktop
-            if (window.innerWidth >= 768) {
-                if (sidebar.classList.contains('collapsed')) {
-                    mainContent.style.marginLeft = '0';
+                // Icon Logic for Mobile (Default arrow-right because hidden)
+                // If active (open) -> Show bars (or arrow-left?) 
+                // Wait, default hidden means arrow-right?
+                // Actually icon logic: 
+                // Collapsed (hidden) -> arrow-right.
+                // Open -> bars.
+
+                if (sidebar.classList.contains('active')) {
+                    // Open
+                    if (icon) {
+                        icon.classList.remove('fa-arrow-right');
+                        icon.classList.add('fa-bars');
+                    }
                 } else {
-                    // Sidebar is sticky/flex, margin might be auto handled by flex
-                    // Actually css says .sidebar width becomes 0. Flexbox handles it.
-                    mainContent.style.marginLeft = '0';
+                    // Closed
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-arrow-right');
+                    }
                 }
-            }
 
-            // Toggle Icon
-            if (icon) { // Ensure icon exists
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-arrow-right');
-                } else {
-                    icon.classList.remove('fa-arrow-right');
-                    icon.classList.add('fa-bars');
+            } else {
+                // Desktop: Toggle Collapsed
+                sidebar.classList.toggle('collapsed');
+
+                // Icon Logic for Desktop
+                if (icon) {
+                    if (sidebar.classList.contains('collapsed')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-arrow-right');
+                    } else {
+                        icon.classList.remove('fa-arrow-right');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             }
         });
 
-        // Mobile Init: Collapse by default
+        // Mobile Init: Default Hidden (CSS handles it as -110%)
+        // We just ensure icon is correct state (arrow-right)
         if (window.innerWidth < 768) {
-            sidebar.classList.add('collapsed');
+            // No class needed on sidebar, as default CSS is hidden.
+            // Just ensure icon is arrow-right
             if (icon) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-arrow-right');
-                icon.classList.add('fa-bars');
             }
         }
     }

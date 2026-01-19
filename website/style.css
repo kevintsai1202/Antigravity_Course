@@ -396,11 +396,11 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .mobile-nav-menu {
-        display: block;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid hsla(var(--glass-border), 0.1);
+
+    .mobile-nav-menu,
+    .progress-box,
+    .timer-box {
+        display: none !important;
     }
 
     /* Ensure only visible on mobile */

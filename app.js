@@ -1,18 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    generateSidebar();
-    setupSmoothScroll();
-    setupQuizzes();
-    setupTimer();
-    setupThemeToggle();
-    setupScrollSpy();
-    setup3DEffects();
-    createParticles();
-    setupSidebarToggle();
-    setupCopyButtons();
-    setupStartLearning();
-    startTerminalEffect();
-    convertCodeBlocksToTerminals();
-});
+// Main Application Logic
+// Initialization is handled by app-init.js
 
 // Code Block to Terminal Converter
 function convertCodeBlocksToTerminals() {

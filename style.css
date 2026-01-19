@@ -406,36 +406,35 @@ a:hover {
     /* Ensure only visible on mobile */
     .app-container {
         flex-direction: column;
-        margin-top: 60px;
+        margin-top: 50px;
+        /* Reduced margin */
     }
 
+    /* Sidebar: Default Hidden on Mobile */
     .sidebar {
         position: fixed;
         left: 0;
-        /* Visible by default (if not collapsed) */
-        top: 70px;
-        height: calc(100vh - 70px);
+        top: 60px;
+        /* Match header height */
+        height: calc(100vh - 60px);
         width: 80%;
-        max-width: 300px;
+        max-width: 280px;
         z-index: 1000;
-        transition: transform 0.3s ease;
-        background: hsla(var(--glass-bg), 0.95);
-        transform: translateX(0);
-    }
-
-    .sidebar.collapsed {
-        width: 80%;
-        /* Maintain width but move it */
-        padding: 1.5rem;
-        /* Maintain padding */
-        border: 1px solid hsla(var(--glass-border), 0.1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: hsla(var(--glass-bg), 0.98);
+        /* Higher opacity */
         transform: translateX(-110%);
-        /* Slide out */
-        opacity: 1;
-        /* Keep opacity, just move it */
+        /* Hidden by default */
+        border-right: 1px solid hsla(var(--glass-border), 0.2);
     }
 
-    /* Overlay for sidebar when active (NOT collapsed) */
+    /* Active class to show sidebar */
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Overlay */
     .sidebar-overlay {
         display: block;
         position: fixed;
@@ -446,47 +445,60 @@ a:hover {
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
         backdrop-filter: blur(2px);
-        opacity: 1;
+        opacity: 0;
+        pointer-events: none;
+        /* Interact only when active */
         transition: opacity 0.3s;
+    }
+
+    .sidebar.active+.sidebar-overlay {
+        opacity: 1;
         pointer-events: auto;
     }
 
-    /* Hide overlay when sidebar is collapsed */
-    .sidebar.collapsed+.sidebar-overlay {
-        opacity: 0;
-        pointer-events: none;
-    }
-
     .main-content {
-        padding: 1rem;
+        padding: 1rem 0.8rem;
         margin-left: 0 !important;
     }
 
     /* Header */
     .nav-brand .logo {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
-    /* Keep nav links but scale or hide if too crowded */
     .nav-links {
         display: none;
     }
 
-    /* Typography */
+    /* Typography Adjustments */
     h1 {
-        font-size: 2.2rem;
+        font-size: 1.6rem !important;
+        margin-bottom: 1rem;
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.3rem !important;
     }
 
     h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem !important;
+    }
+
+    /* Accordion Summary Font */
+    details.accordion summary {
+        font-size: 1rem !important;
+        padding: 0.8rem 1rem;
     }
 
     .glass-card {
-        padding: 1.5rem;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Terminal Font */
+    .terminal-window pre,
+    .code-block pre {
+        font-size: 0.85rem;
     }
 }
 

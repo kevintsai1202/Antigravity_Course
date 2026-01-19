@@ -415,10 +415,16 @@ a:hover {
     }
 
     /* Ensure only visible on mobile */
+    /* Ensure only visible on mobile */
     .app-container {
         flex-direction: column;
         margin-top: 50px;
         /* Reduced margin */
+        width: 100% !important;
+        /* Force full width */
+        padding: 0 !important;
+        /* Remove container padding */
+        max-width: 100% !important;
     }
 
     /* Sidebar: Default Hidden on Mobile */

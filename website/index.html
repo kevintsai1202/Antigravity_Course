@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Vibe Coding 實戰工作坊</title>
+    <meta name="description"
+        content="Antigravity Vibe Coding 實戰工作坊 - 用直覺寫程式，開啟你的 AI 開發之旅。教你如何運用 AI Agent 與 MCP 進行高效開發。">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antigravity-workshop.example.com/">
+    <meta property="og:title" content="Antigravity Vibe Coding 實戰工作坊">
+    <meta property="og:description" content="用直覺寫程式，開啟你的 AI 開發之旅。無需深厚程式底子，只需想像力。">
+    <meta property="og:image" content="assets/instructor.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Antigravity Vibe Coding 實戰工作坊">
+    <meta property="twitter:description" content="用直覺寫程式，開啟你的 AI 開發之旅。">
+    <meta property="twitter:image" content="assets/instructor.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="ai-effects.css">
+    <link rel="stylesheet" href="hero-modern.css">
+    <link rel="stylesheet" href="terminal.css">
+    <link rel="stylesheet" href="quiz-effects.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div id="particles"></div>
+
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="nav-brand" style="display: flex; align-items: center; gap: 1rem;">
+                <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar" aria-label="切換導航欄">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" class="logo">AG.VibeCoding</a>
+            </div>
+            <div class="nav-actions">
+                <div class="nav-links">
+                    <a href="#module1" class="nav-link">核心觀念</a>
+                    <a href="#module2" class="nav-link">實戰專案</a>
+
+                </div>
+                <button class="theme-toggle" id="themeToggle" title="切換日夜模式" aria-label="切換日夜模式">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="progress-box">
+                <div class="progress-label">
+                    <span>課程總進度</span>
+                    <span id="progressText">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="timer-box">
+                <h4>學習計時</h4>
+                <!-- Flip Clock Structure -->
+                <div class="flip-clock" id="flipClock">
+                    <div class="flip-unit" id="m1">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="flip-unit" id="m2">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="flip-colon">:</div>
+                    <div class="flip-unit" id="s1">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="flip-unit" id="s2">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button class="btn-timer" id="startTimer" title="Start" aria-label="開始計時">▶</button>
+                    <button class="btn-timer" id="pauseTimer" title="Pause" aria-label="暫停計時">⏸</button>
+                </div>
+            </div>
+
+            <div class="toc-box">
+                <h4>課程目錄</h4>
+                <nav id="toc">
+                    <!-- Dynamic Content -->
+                </nav>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="hero">
+                <div class="container" style="position: relative;">
+                    <div class="hero-glow"></div>
+                    <h1 class="hero-title-modern animate-fade-up">Antigravity Vibe Coding <br>實戰工作坊</h1>
+                    <p class="animate-fade-up delay-100 hero-subtitle-modern">用直覺寫程式，開啟你的 AI 開發之旅。無需深厚程式底子，只需想像力。</p>
+
+                    <a href="#module1" class="btn-command animate-fade-up delay-200"
+                        id="startLearningBtn">./start_learning.sh</a>
+
+                    <!-- Robot Coding Terminal -->
+                    <div class="terminal-window animate-fade-up delay-300">
+                        <div class="terminal-header">
+                            <div class="terminal-dot dot-red"></div>
+                            <div class="terminal-dot dot-yellow"></div>
+                            <div class="terminal-dot dot-green"></div>
+                        </div>
+                        <div class="terminal-body" id="heroTerminal">
+                            <!-- JS will type here -->
+                            <span class="cmd-text">user@antigravity:~$ </span><span id="typeWriter"></span><span
+                                class="cursor"></span>
+                        </div>
+                    </div>
+
+                    <!-- Instructor Info -->
+                    <section class="social-links">
+                        <div class="social-info">
+                            <img src="assets/instructor.png" alt="講師頭像" class="social-avatar">
+                            <div class="social-name">凱文大叔教你寫程式</div>
+                        </div>
+                        <div class="social-links-wrapper">
+                            <a href="https://www.youtube.com/@pg-kt?sub_confirmation=1" target="_blank"
+                                class="social-link social-link-youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube 頻道</span>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61564137718583" target="_blank"
+                                class="social-link social-link-facebook">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook 粉絲專頁</span>
+                            </a>
+                            <a href="https://www.threads.com/@cai.chengkai" target="_blank"
+                                class="social-link social-link-threads">
+                                <i class="fab fa-threads"></i>
+                                <span>Threads</span>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </header>
+
+
+            <!-- Module 1 -->
+            <section id="module1" class="module-section">
+                <h2>01 / 核心觀念與工具</h2>
+
+                <div class="glass-card">
+                    <h3>歡迎來到 Vibe Coding</h3>
+                    <p>「Vibe Coding」是一種全新的開發典範，意指「憑藉直覺與感覺來撰寫程式」。</p>
+                    <details class="accordion">
+                        <summary>🎯 傳統開發 vs. Vibe Coding</summary>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>傳統開發</strong>：需要精通語法、邏輯與演算法，專注於「如何實作」。</li>
+                                <li><strong>Vibe Coding</strong>：透過自然語言與 AI 協作，專注於「想要做什麼」與「體驗如何」，而非底層實作細節。</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🚀 為什麼選用 Google Antigravity？</summary>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>原生 AI 整合</strong>：不僅是自動補全，而是能理解整個專案脈絡的 AI 助理。</li>
+                                <li><strong>Agentic Capabilities</strong>：具備自主執行任務的能力（如執行終端機指令、瀏覽網頁）。</li>
+                                <li><strong>Global Context</strong>：內建專案級知識庫，會隨著開發過程自動累積與學習。</li>
+                                <li><strong>Internal Browser (內建瀏覽器)</strong>：Agent 可直接操控 Chrome 進行網頁測試與資料爬取。</li>
+                                <li><strong>Manager View (雙視角協作)</strong>：獨創 Editor/Manager 雙視角，讓開發者從「寫 Code」升級為「管理
+                                    Agent」。</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass-card">
+                    <h3>環境建置重點</h3>
+                    <details class="accordion">
+                        <summary>📦 基礎軟體安裝</summary>
+                        <div class="accordion-content">
+                            <ol>
+                                <li><strong>Antigravity Editor</strong>：請至 <a href="https://antigravity.google/"
+                                        target="_blank">官網下載</a> 並安裝適用於您作業系統的版本。首次啟動需登入 Google 帳號。</li>
+                                <li><strong>Git (版本控管)</strong>：前往 <a href="https://git-scm.com/"
+                                        target="_blank">git-scm.com</a> 下載安裝。</li>
+                            </ol>
+                            <pre data-lang="bash"><code>git config --global user.name "Your Name"
+git config --global user.email "your@email.com"</code></pre>
+                            <p><strong>GitHub CLI (gh)</strong>：請至 <a href="https://cli.github.com/"
+                                    target="_blank">cli.github.com</a> 下載安裝。安裝後執行登入授權：</p>
+                            <pre data-lang="bash"><code>gh auth login</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🐍 程式語言環境 (Python & Node.js)</summary>
+                        <div class="accordion-content">
+                            <li><strong>Python</strong>：許多 AI 工具與腳本依賴 Python。<a href="https://www.python.org/downloads/"
+                                    target="_blank">官網下載</a> (安裝時請務必勾選 "Add Python to PATH")。</li>
+                            <li><strong>Node.js</strong>：Web 開發與許多 MCP Server 的執行環境。<a
+                                    href="https://nodejs.org/en/download/" target="_blank">官網下載</a> (建議安裝 LTS 版本)。</li>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🛠️ 實用工具 (Pandoc, ffmpeg, yt-dlp)</summary>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><strong>Pandoc</strong>：文件轉換神器 (md 轉 docx/pdf)。<a
+                                        href="https://pandoc.org/installing.html" target="_blank">下載連結</a></li>
+                                <li><strong>ffmpeg</strong>：影音處理工具 (影片轉音訊、轉檔)。<a href="https://ffmpeg.org/download.html"
+                                        target="_blank">下載連結</a></li>
+                                <li><strong>yt-dlp</strong>：強大的影片下載工具 (用於字幕產生器專案)。<a
+                                        href="https://github.com/yt-dlp/yt-dlp/releases" target="_blank">GitHub
+                                        Release</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass-card">
+                    <h3>核心機能</h3>
+                    <details class="accordion">
+                        <summary>📝 Rules (規則設定)</summary>
+                        <div class="accordion-content">
+                            <p>Rules 是指導 AI 行為的準則。</p>
+                            <ul>
+                                <li><strong>Global Rules</strong>：<code>~/.gemini/GEMINI.md</code> (套用於所有專案)</li>
+                                <li><strong>Workspace Rules</strong>：<code>.agent/rules/*.md</code> (套用於當前專案)</li>
+                            </ul>
+                            <p>進階設定支援 <strong>Glob Patterns</strong>（如 <code>**/*.ts</code> 只對 TypeScript 生效）和
+                                <strong>觸發模式</strong>（Always On / Model Decision）。
+                            </p>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🔄 Workflow (自動化流程)</summary>
+                        <div class="accordion-content">
+                            <p>Workflow 是一套預先定義好的 SOP，讓 AI 依照標準步驟執行任務。</p>
+                            <ul>
+                                <li><strong>專案級</strong>：<code>.agent/workflows/</code></li>
+                                <li><strong>全域級</strong>：<code>~/.gemini/antigravity/workflows/</code></li>
+                            </ul>
+                            <pre data-lang="markdown"><code>---
+description: 部署網站到 GitHub Pages
+---
+1. 執行 build 指令
+2. 確認 build 資料夾是否存在
+3. [Turbo] 執行 gh-pages 部署指令</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🔌 MCP (Model Context Protocol)</summary>
+                        <div class="accordion-content">
+                            <p>MCP 是連接 AI 模型與外部工具的標準協議。</p>
+                            <ul>
+                                <li><strong>Context Resources</strong>：讓 AI 讀取外部資料（如資料庫、Notion）。</li>
+                                <li><strong>Tools</strong>：讓 AI 執行外部動作（如發送 Slack 訊息）。</li>
+                            </ul>
+                            <p>自訂 Server 範例 (JSON 設定檔):</p>
+                            <pre data-lang="json"><code>{
+  "mcpServers": {
+    "my-db": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "test.db"]
+    }
+  }
+}</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🧩 Skills (技能建立與管理)</summary>
+                        <div class="accordion-content">
+                            <p>Skills 是讓 Agent 學會特定技能的機制，類似於為 AI 安裝「應用程式」。</p>
+                            <ul>
+                                <li><strong>專案級</strong>：<code>.agent/skills/</code></li>
+                                <li><strong>全域級</strong>：<code>~/.gemini/antigravity/skills/</code></li>
+                            </ul>
+                            <p><strong>SKILL.md 結構範例：</strong></p>
+                            <pre data-lang="markdown"><code>---
+name: document-converter
+description: Converts Markdown files to PDF using Pandoc.
+---
+# Instructions
+當使用者想要轉換文件格式時...</code></pre>
+                            <p>資源推薦：<a href="https://skillsmp.com/" target="_blank"
+                                    style="color: hsl(var(--accent-secondary));">Skills Marketplace (skillsmp.com)</a>
+                            </p>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🤖 Agent Manager</summary>
+                        <div class="accordion-content">
+                            <p>Antigravity 的核心中樞，透過 <code>Cmd+E</code> (macOS) 或 <code>Ctrl+E</code> (Windows) 喚醒。</p>
+                            <img src="https://antigravity.google/assets/image/docs/editor-open-agent-manager.png"
+                                alt="Agent Manager UI"
+                                style="width: 100%; border-radius: 8px; margin: 10px 0; border: 1px solid rgba(255,255,255,0.2);">
+                            <ul>
+                                <li><strong>Context Aware</strong>：自動感知當前編輯的檔案與游標位置。</li>
+                                <li><strong>Tools Integration</strong>：直接調用終端機、瀏覽器與檔案系統。</li>
+                                <li><strong>Background Tasks</strong>：在背景執行耗時任務而不卡住編輯器。</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>📄 Artifacts (產出物)</summary>
+                        <div class="accordion-content">
+                            <p>Agent 不只是聊天，而是產出結構化的工作成果。</p>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <div class="code-block" style="flex: 1; min-width: 250px;">
+                                    <div class="code-header">task.md</div>
+                                    <pre data-lang="MARKDOWN">- [ ] 此檔案用於追蹤任務進度
+- [x] Agent 會自動更新此清單
+- [ ] 確保目標清晰可執行</pre>
+                                </div>
+                                <div class="code-block" style="flex: 1; min-width: 250px;">
+                                    <div class="code-header">implementation_plan.md</div>
+                                    <pre data-lang="MARKDOWN"># 技術實作計畫
+## Proposed Changes
+- 詳細列出將修改的檔案
+- 預先識別潛在風險</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+
+
+
+
+
+                <div class="quiz-container" id="quiz-mod1">
+                    <!-- Quiz 1 will be injected here -->
+                </div>
+            </section>
+
+
+            <section id="module2" class="module-section">
+                <h2>02 / 實戰專案演練</h2>
+
+                <div class="glass-card">
+                    <h3>Vibe Coding 開發流程</h3>
+                    <p>不只是寫 Code，更是系統設計。「想清楚」比「寫得快」更重要。</p>
+                    <details class="accordion">
+                        <summary>📋 Vibe Coding 五部曲</summary>
+                        <div class="accordion-content">
+                            <ol>
+                                <li><strong>PRD (需求文件)</strong>：描述「為什麼要做」以及「使用者是誰」。</li>
+                                <li><strong>Spec (規格文件)</strong>：定義「系統架構」、「資料格式」與「關鍵邏輯」。</li>
+                                <li><strong>Task List (任務清單)</strong>：將大目標拆解為可執行的小任務 (<code>task.md</code>)。</li>
+                                <li><strong>Implementation Plan (實作計畫)</strong>：規劃修改哪些檔案、新增哪些功能。</li>
+                                <li><strong>Walkthrough (變更說明)</strong>：完成後產出說明文件，紀錄做了什麼與如何驗證。</li>
+                            </ol>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass-card">
+                    <h3>五大實戰專案</h3>
+                    <details class="accordion">
+                        <summary>📁 專案一：資料夾整理腳本 (File Organizer)</summary>
+                        <div class="accordion-content">
+                            <p><strong>目標</strong>：編寫 Python 腳本，自動將雜亂檔案依據副檔名分類。</p>
+                            <p><strong>Prompt 範例</strong>：</p>
+                            <pre
+                                data-lang="prompt"><code>請寫一個 Python 腳本，將當前資料夾下的所有檔案依據副檔名分類到對應的子資料夾中。如果不支援的格式則移到 'Others' 資料夾。</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>📄 專案二：文件轉換 Skill (File Converter)</summary>
+                        <div class="accordion-content">
+                            <p><strong>目標</strong>：建立一個可重複使用的 Skill，將 Markdown 文件轉換為 DOCX 或 PDF。</p>
+                            <p><strong>使用 Pandoc</strong>：</p>
+                            <pre data-lang="bash"><code>pandoc readme.md -o output.docx
+pandoc readme.md -o output.pdf --pdf-engine=xelatex</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🌐 專案三：教學網頁製作 (Teaching Website)</summary>
+                        <div class="accordion-content">
+                            <p><strong>目標</strong>：製作一個個人教學網頁，並部署到 GitHub Pages。</p>
+                            <pre data-lang="bash"><code># 建立遠端儲存庫並推送
+gh repo create my-website --public --source=.
+git add .
+git commit -m "Initial commit"
+git push -u origin main</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>📊 專案四：YT 頻道分析報告 (Channel Analysis)</summary>
+                        <div class="accordion-content">
+                            <p><strong>目標</strong>：使用 Browser Subagent 自動瀏覽 YouTube 頻道，抓取影片數據並產出 HTML 報告。</p>
+                            <p><strong>Prompt 範例</strong>：</p>
+                            <pre
+                                data-lang="prompt"><code>請前往『Antigravity 官方頻道』，抓取最近 10 部影片的標題與觀看次數，並找出一週內觀看數最高的影片，整理成一份包含長條圖的 HTML 報告。</code></pre>
+                        </div>
+                    </details>
+                    <details class="accordion">
+                        <summary>🎬 專案五：YouTube 字幕產生器 (Subtitle Generator)</summary>
+                        <div class="accordion-content">
+                            <p><strong>目標</strong>：輸入 YouTube 連結，自動下載影片、轉檔音訊、並使用 Whisper 模型生成 SRT 字幕檔。</p>
+                            <p><strong>核心步驟</strong>：</p>
+                            <ol>
+                                <li>使用 <code>yt-dlp</code> 下載音訊。</li>
+                                <li>呼叫 Groq API (Whisper) 進行語音轉文字。</li>
+                                <li>將回應格式轉換為標準 SRT 時間軸格式。</li>
+                            </ol>
+                            <pre data-lang="bash"><code># 使用 yt-dlp 下載音訊
+yt-dlp -x --audio-format mp3 "YOUR_YOUTUBE_URL"</code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="quiz-container" id="quiz-mod2">
+                    <!-- Quiz 2 will be injected here -->
+                </div>
+            </section>
+
+
+
+
+            <footer>
+                <p>© 2026 Antigravity Vibe Coding Workshop. Created with AI.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* Dynamic Sidebar Styles */
+        .toc-sub-link {
+            padding-left: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            border-left: 3px solid transparent;
+        }
+
+        .toc-sub-link.active {
+            opacity: 1;
+            color: hsl(var(--accent-secondary));
+            border-left-color: hsl(var(--accent-secondary));
+            background: linear-gradient(90deg, hsla(var(--accent-secondary), 0.1), transparent);
+            box-shadow: inset 2px 0 0 hsl(var(--accent-secondary));
+            text-shadow: 0 0 8px hsla(var(--accent-secondary), 0.5);
+        }
+    </style>
+    <!-- Sidebar Toggle Moved to Nav -->
+
+    <!-- Script moved to app.js -->
+</body>
+
+</html>

@@ -391,6 +391,95 @@ a:hover {
     }
 }
 
+@media (max-width: 768px) {
+
+    /* Layout Adjustments */
+    .app-container {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        /* Visible by default (if not collapsed) */
+        top: 70px;
+        height: calc(100vh - 70px);
+        width: 80%;
+        max-width: 300px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        background: hsla(var(--glass-bg), 0.95);
+        transform: translateX(0);
+    }
+
+    .sidebar.collapsed {
+        width: 80%;
+        /* Maintain width but move it */
+        padding: 1.5rem;
+        /* Maintain padding */
+        border: 1px solid hsla(var(--glass-border), 0.1);
+        transform: translateX(-110%);
+        /* Slide out */
+        opacity: 1;
+        /* Keep opacity, just move it */
+    }
+
+    /* Overlay for sidebar when active (NOT collapsed) */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        backdrop-filter: blur(2px);
+        opacity: 1;
+        transition: opacity 0.3s;
+        pointer-events: auto;
+    }
+
+    /* Hide overlay when sidebar is collapsed */
+    .sidebar.collapsed+.sidebar-overlay {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .main-content {
+        padding: 1rem;
+        margin-left: 0 !important;
+    }
+
+    /* Header */
+    .nav-brand .logo {
+        font-size: 1.2rem;
+    }
+
+    /* Keep nav links but scale or hide if too crowded */
+    .nav-links {
+        display: none;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+    }
+}
+
 .timer-controls {
     display: flex;
     gap: 0.5rem;
